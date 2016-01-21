@@ -1,5 +1,6 @@
 package com.test.dao;
 
+import com.test.dao.exception.UserDoesNotExistsException;
 import com.test.domain.Userdetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ public class UserDaoImpl implements UserDao<Userdetails> {
 
     @Override
     public Userdetails findByUserId(String userid) {
-        Userdetails userdetails = new Userdetails();
+        Userdetails userdetails = null;
         try {
             Object testObj = entityManager.createNamedQuery("userDetails.findByUserId", Userdetails.class)
                     .setParameter("userid", userid).getSingleResult();
@@ -28,9 +29,6 @@ public class UserDaoImpl implements UserDao<Userdetails> {
 
         } catch (NoResultException nre) {
             logger.error("User [ " + userid + " ] not found in database");
-        }
-        if (userdetails == null) {
-            userdetails = new Userdetails();
         }
         //entityManager.close();
         return userdetails;

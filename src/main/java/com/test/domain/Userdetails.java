@@ -1,5 +1,7 @@
 package com.test.domain;
 
+import org.hibernate.annotations.GeneratorType;
+
 import javax.persistence.*;
 
 @Entity
@@ -35,7 +37,7 @@ public class Userdetails {
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     public int getId() {
         return id;
     }

@@ -2,8 +2,13 @@ package com.test.dao;
 
 import com.test.domain.Userdetails;
 
-public interface UserDao<T> {
-    T findByUserId(String userid);
+import java.util.List;
 
-    void save(T userdetails);
+public interface UserDao {
+    <T> T findByUserId(String userid,Class<T> domainClass);
+
+    <T> void save(T userdetails);
+
+   <T> List<T> getAllElements(Class<T> ofWhat);
+
 }

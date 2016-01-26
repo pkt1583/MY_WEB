@@ -1,21 +1,37 @@
 package com.test.domain;
 
-import org.hibernate.annotations.GeneratorType;
 
+import javax.annotation.ManagedBean;
+import javax.enterprise.inject.Model;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "userdetails",schema = "assign")
+@Table(name = "userdetails", schema = "assign")
 @NamedQueries(
         @NamedQuery(name = "userDetails.findByUserId", query = "SELECT U FROM Userdetails U WHERE U.userId=:userid")
 )
+@Model
 public class Userdetails {
-    private String userId;
-    private String userPassword;
-    private int id;
-
     @Basic
     @Column(name = "userId", nullable = true, insertable = true, updatable = true, length = 20)
+    private String userId;
+    @Basic
+    @Column(name = "userPassword", nullable = true, insertable = true, updatable = true, length = 20)
+    private String userPassword;
+
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "USER_ROLE",  schema = "assign", joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "roleId")}
+    )
+    private List<UserRoles> userRoles;
 
     public String getUserId() {
         return userId;
@@ -25,8 +41,7 @@ public class Userdetails {
         this.userId = userId;
     }
 
-    @Basic
-    @Column(name = "userPassword", nullable = true, insertable = true, updatable = true, length = 20)
+
     public String getUserPassword() {
         return userPassword;
     }
@@ -35,9 +50,7 @@ public class Userdetails {
         this.userPassword = userPassword;
     }
 
-    @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
-    @GeneratedValue
+
     public int getId() {
         return id;
     }
@@ -71,5 +84,13 @@ public class Userdetails {
         result = 31 * result + (userPassword != null ? userPassword.hashCode() : 0);
         result = 31 * result + id;
         return result;
+    }
+
+    public List<UserRoles> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRoles> userRoles) {
+        this.userRoles = userRoles;
     }
 }

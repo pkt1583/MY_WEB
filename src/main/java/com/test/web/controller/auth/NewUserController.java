@@ -16,6 +16,7 @@ public class NewUserController {
     private UserService userService;
 
     public void createNewUser(NewUser newuser){
+        System.out.println("Called new user created "+newuser);
        userService.createNewUse(newuser);
     }
 }

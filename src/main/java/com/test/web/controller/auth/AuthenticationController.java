@@ -1,7 +1,7 @@
 package com.test.web.controller.auth;
 
 import com.test.annotation.LoggedInUser;
-import com.test.service.AuthenticationService;
+import com.test.service.UserService;
 import com.test.web.model.auth.Credentials;
 import com.test.web.model.auth.UserInfo;
 import org.slf4j.Logger;
@@ -24,24 +24,25 @@ public class AuthenticationController {
     Credentials credentials;
 
     @Inject
-    AuthenticationService authenticationService;
+    UserService userService;
 
     private UserInfo userInfo;
 
     public String authenticate() {
         logger.debug("Got request to Authenticate " + userInfo);
-        if (authenticationService.authenticate(credentials)) {
+        if (userService.authenticate(credentials)) {
             userInfo = new UserInfo();
             userInfo.setUserId(credentials.getUsername());
             userInfo.setPassword(credentials.getPassword());
             return "success";
-        }else{
+        } else {
             return "index";
         }
 
     }
 
-    @Produces @LoggedInUser
+    @Produces
+    @LoggedInUser
     public UserInfo getUserInfo() {
         logger.debug("Setting userinfo via Factory");
         if (userInfo != null) {

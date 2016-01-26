@@ -3,9 +3,10 @@ package com.test.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bid",schema = "assign")
+@Table(name = "bid", schema = "assign")
 public class Bid {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bidId;
 
     @ManyToOne

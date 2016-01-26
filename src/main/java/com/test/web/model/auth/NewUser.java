@@ -1,12 +1,44 @@
 package com.test.web.model.auth;
 
+import com.test.dao.UserDao;
+import com.test.domain.UserRoles;
+import com.test.service.UserService;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Model;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import java.util.List;
 
 @Model
 @RequestScoped
 public class NewUser {
     private String username;
+
+    private List<UserRoles> userRoles;
+
+    @Inject
+    private UserService userService;
+
+    private UserRoles selectedRole;
+
+    private String password;
+    private String confirmPassword;
+
+    @PostConstruct
+    public void populateRoles(){
+        List<UserRoles> userRoles=userService.getAllRoles();
+        setUserRoles(userRoles);
+        System.out.println("Calling populate Roles "+userRoles);
+    }
+
+    public void validatePassword(FacesContext facesContext, UIComponent uiComponent,Object value){
+        System.out.println("This is error "+value);
+        System.out.println(this);
+    }
 
     @Override
     public String toString() {
@@ -16,9 +48,6 @@ public class NewUser {
                 ", confirmPassword='" + confirmPassword + '\'' +
                 '}';
     }
-
-    private String password;
-    private String confirmPassword;
 
     public String getUsername() {
         return username;
@@ -42,5 +71,21 @@ public class NewUser {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public List<UserRoles> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRoles> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public UserRoles getSelectedRole() {
+        return selectedRole;
+    }
+
+    public void setSelectedRole(UserRoles selectedRole) {
+        this.selectedRole = selectedRole;
     }
 }

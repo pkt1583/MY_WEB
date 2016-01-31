@@ -1,6 +1,6 @@
 package com.test.dao.exception;
 
-public class UserDoesNotExistsException extends RuntimeException{
+public class UserDoesNotExistsException extends RuntimeException {
     public UserDoesNotExistsException() {
     }
 

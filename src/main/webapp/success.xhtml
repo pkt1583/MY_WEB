@@ -4,15 +4,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
-<f:view>
-    <h:outputLabel value="Welcome #{userdetails.userId}. Hope that you will enjoy this site"/>
-    <ui:repeat value="${userdetails.userRoles}" var="userRoles">
-        <ui:repeat value="${userRoles.applicationLinks}" var="applicationLinks">
-            <h:commandLink value="${applicationLinks.linkDescription}" action="${applicationLinks.link}"/>
-        </ui:repeat>
+        >
+<ui:composition template="common.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <ui:param value="${authenticationController.loggedUser}" name="currentUser"/>
+            <h:outputLabel value="Welcome #{currentUser.userId}. Hope that you will enjoy this site"/>
+            <ui:repeat value="${currentUser.userRoles}" var="userRoles">
 
-    </ui:repeat>
+                <ui:repeat value="${userRoles.applicationLinks.toArray()}" var="appLinks">
+                    <ui:repeat value="${appLinks}" var="app">
+                        <h:commandLink value="${app.linkDescription}" action="#{app.getLink()}"/>"/>
+                    </ui:repeat>
 
-</f:view>
+                </ui:repeat>
+
+            </ui:repeat>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
 </html>

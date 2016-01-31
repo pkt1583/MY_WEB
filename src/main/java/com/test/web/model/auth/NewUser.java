@@ -1,15 +1,11 @@
 package com.test.web.model.auth;
 
-import com.test.dao.UserDao;
 import com.test.domain.UserRoles;
 import com.test.service.UserService;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Model;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -24,21 +20,8 @@ public class NewUser {
     private UserService userService;
 
     private UserRoles selectedRole;
-
     private String password;
     private String confirmPassword;
-
-    @PostConstruct
-    public void populateRoles(){
-        List<UserRoles> userRoles=userService.getAllRoles();
-        setUserRoles(userRoles);
-        System.out.println("Calling populate Roles "+userRoles);
-    }
-
-    public void validatePassword(FacesContext facesContext, UIComponent uiComponent,Object value){
-        System.out.println("This is error "+value);
-        System.out.println(this);
-    }
 
     @Override
     public String toString() {
@@ -47,6 +30,13 @@ public class NewUser {
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
                 '}';
+    }
+
+    @PostConstruct
+    public void populateRoles() {
+        List<UserRoles> userRoles = userService.getAllRoles();
+        setUserRoles(userRoles);
+        System.out.println("Calling populate Roles " + userRoles);
     }
 
     public String getUsername() {

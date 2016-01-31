@@ -2,7 +2,6 @@ package com.test.web.controller.auth;
 
 import com.test.service.UserService;
 import com.test.web.model.auth.NewUser;
-import com.test.web.model.auth.UserInfo;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -15,8 +14,8 @@ public class NewUserController {
     @Inject
     private UserService userService;
 
-    public void createNewUser(NewUser newuser){
-        System.out.println("Called new user created "+newuser);
-       userService.createNewUse(newuser);
+    public void createNewUser(NewUser newuser) {
+        System.out.println("Called new user created " + newuser);
+        userService.createNewUse(newuser);
     }
 }

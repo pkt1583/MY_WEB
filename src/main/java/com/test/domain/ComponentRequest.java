@@ -4,25 +4,21 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "component", schema = "assign")
+@Table(name = "componentRequest", schema = "assign")
 public class ComponentRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int componentId;
+    private int requestId;
+
     @ManyToOne
     @JoinColumn(name = "Employee_id")
     private Employee employee;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "componentRequest")
     private List<Bid> bids;
-
-    public int getComponentId() {
-        return componentId;
-    }
-
-    public void setComponentId(int componentId) {
-        this.componentId = componentId;
-    }
+    @ManyToMany
+    @JoinTable(name = "REQUEST_COMPONENT", schema = "assign", joinColumns = {@JoinColumn(name = "REQUEST_ID", referencedColumnName = "requestId")}, inverseJoinColumns = {@JoinColumn(name = "COMPONENT_ID", referencedColumnName = "componentId")})
+    private List<Component> components;
 
     public Employee getEmployee() {
         return employee;
@@ -32,9 +28,6 @@ public class ComponentRequest {
         this.employee = employee;
     }
 
-
-//    private List<Component> component;
-
     public List<Bid> getBids() {
         return bids;
     }
@@ -43,4 +36,11 @@ public class ComponentRequest {
         this.bids = bids;
     }
 
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
+    }
 }

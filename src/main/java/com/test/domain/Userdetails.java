@@ -1,19 +1,22 @@
 package com.test.domain;
 
 
-import javax.annotation.ManagedBean;
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "userdetails", schema = "assign")
 @NamedQueries(
-        @NamedQuery(name = "userDetails.findByUserId", query = "SELECT U FROM Userdetails U WHERE U.userId=:userid")
+        @NamedQuery(name = "userDetails.findByUserName", query = "SELECT U FROM Userdetails U WHERE U.userId=:userName")
+
 )
 @Model
-public class Userdetails {
+@SessionScoped
+public class Userdetails implements Serializable {
     @Basic
     @Column(name = "userId", nullable = true, insertable = true, updatable = true, length = 20)
     private String userId;
@@ -28,10 +31,10 @@ public class Userdetails {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "USER_ROLE",  schema = "assign", joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
+            name = "USER_ROLE", schema = "assign", joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "roleId")}
     )
-    private List<UserRoles> userRoles;
+    private List<UserRoles> userRoles=new ArrayList<>();
 
     public String getUserId() {
         return userId;

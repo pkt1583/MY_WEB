@@ -1,11 +1,10 @@
 package com.test.domain;
 
-/**
- * Created by bbbb on 1/6/2016.
- */
-public class BreakDisk implements Component {
-    @Override
-    public String getName() {
-        return "BreakDisk";
-    }
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "breakDisk")
+public class BreakDisk extends Component {
+
 }

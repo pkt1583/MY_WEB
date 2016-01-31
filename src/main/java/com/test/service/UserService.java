@@ -4,38 +4,36 @@ import com.test.dao.UserDao;
 import com.test.domain.UserRoles;
 import com.test.domain.Userdetails;
 import com.test.service.exception.UserAlreadyExistsException;
-import com.test.web.model.auth.Credentials;
 import com.test.web.model.auth.NewUser;
+import com.test.web.model.auth.UserInfo;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.ArrayList;
+import java.awt.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Named(value = "userSerivce")
 @ApplicationScoped
-public class UserService {
+public class UserService implements Serializable{
 
     @EJB(beanName = "userDao")
     private UserDao userDao;
 
+    @Inject
+    private UserInfo credential;
+
     public boolean createNewUse(NewUser userInfo) {
-        Userdetails userdetails = userDao.findByUserId(userInfo.getUsername(), Userdetails.class);
+        Userdetails userdetails = userDao.getUserDetailsByUserName(userInfo.getUsername());
         if (userdetails != null) {
             throw new UserAlreadyExistsException("The user " + userInfo.getUsername() + "is already present in system");
         } else {
             userdetails = new Userdetails();
             userdetails.setUserId(userInfo.getUsername());
             userdetails.setUserPassword(userInfo.getPassword());
-            List<UserRoles> roles=userdetails.getUserRoles();
-            if(roles==null){
-                roles=new ArrayList<>();
-                roles.add(userInfo.getSelectedRole());
-                userdetails.setUserRoles(roles);
-            }else {
-                userdetails.getUserRoles().add(userInfo.getSelectedRole());
-            }
+            userdetails.getUserRoles().add(userInfo.getSelectedRole());
             userDao.save(userdetails);
             return true;
         }
@@ -45,11 +43,18 @@ public class UserService {
         return userDao.getAllElements(UserRoles.class);
     }
 
-    public boolean authenticate(Credentials credentials) {
-        Userdetails userdetails = userDao.findByUserId(credentials.getUsername(), Userdetails.class);
+
+    public Userdetails authenticate() {
+        Userdetails userdetails = userDao.getUserDetailsByUserName(credential.getUserId());
         if (userdetails != null) {
-            return userdetails.getUserPassword().equals(credentials.getPassword());
+            if(userdetails.getUserPassword().equals(credential.getPassword())){
+                return userdetails;
+            }
         }
-        return false;
+        return null;
+    }
+
+    public UserRoles getRoleById(String s) {
+        return userDao.findOneById(Integer.parseInt(s), UserRoles.class);
     }
 }

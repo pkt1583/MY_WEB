@@ -2,37 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml">
-<h:form>
-    <table>
-        <thead>Please enter Login details to the system</thead>
-        <tr>
-            <td>UserName :</td>
-            <td><h:inputText value="#{credentials.username}"/></td>
-        </tr>
+<html xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+    <ui:composition template="common.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:panel header="Please Enter Login details to the System">
+                        <table>
+                            <tr>
+                                <td><h:outputLabel for="userId"/></td>
+                                <td><h:inputText id="userId" value="#{userInfo.userId}"/></td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel for="password"/></td>
+                                <td><h:inputSecret id="password" value="#{userInfo.password}"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h:commandButton value="Login" type="submit"
+                                                     action="#{authenticationController.authenticate()}">
+                                        <h:outputText>Logout</h:outputText>
 
-        <tr>
-            <td>Password :</td>
-            <td><h:inputSecret value="#{credentials.password}"/></td>
-        </tr>
+                                    </h:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </p:panel>
+                </h:panelGrid>
 
-        <tr>
-            <td><h:commandButton value="Login" type="submit" action="#{authenticationController.authenticate()}">
-                <h:outputText>Logout</h:outputText>
-            </h:commandButton>
-            </td>
-        </tr>
-    </table>
-
-    <h:commandLink value="Create New User" action="newUser"/>
-    <!--printing class loader below
-   <h:dataTable value="#{classPrinter.classes}" var="row">
-        <h:column>
-            <h:outputLabel value="#{row}"/>
-        </h:column>
-
-    </h:dataTable> -->
-
-</h:form>
-
+                <h:commandLink value="Create New User" action="newUser"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>

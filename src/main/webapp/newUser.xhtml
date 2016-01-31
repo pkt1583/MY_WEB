@@ -11,11 +11,7 @@
         <thead>Please enter user details in system</thead>
         <tr>
             <td>UserName :</td>
-            <td><h:inputText value="#{newUser.username}" validator="#{newUser.validatePassword}">
-                <f:ajax event="blur" render="passwordError"/>
-            </h:inputText>
-            </td>
-            <td> <h:message for="confirmPassword" id="passwordError" /></td>
+            <td><h:inputText value="#{newUser.username}"/></td>
         </tr>
 
         <tr>
@@ -25,16 +21,12 @@
 
         <tr>
             <td>Confirm Password :</td>
-            <td><h:inputSecret id="confirmPassword" value="#{newUser.confirmPassword}" >
-
-            </h:inputSecret>
-
-            </td>
+            <td><h:inputSecret value="#{newUser.confirmPassword}"/></td>
         </tr>
 
         <tr>
             <td> Select Role : </td>
-            <td><h:selectOneMenu value="${newUser.selectedRole}" converter="userRoleConverter">
+            <td><h:selectOneMenu value="${newUser.selectedRole}" converter="#{userRoleConverter}">
                 <f:selectItems value="${newUser.userRoles}" var="userRole" itemValue="${userRole}" itemLabel="${userRole.roleName}"></f:selectItems>
             </h:selectOneMenu> </td>
         </tr>

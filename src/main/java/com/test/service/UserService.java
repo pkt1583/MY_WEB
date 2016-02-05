@@ -1,6 +1,7 @@
 package com.test.service;
 
 import com.test.dao.UserDao;
+import com.test.domain.ApplicationLinks;
 import com.test.domain.UserRoles;
 import com.test.domain.Userdetails;
 import com.test.service.exception.UserAlreadyExistsException;
@@ -56,5 +57,11 @@ public class UserService implements Serializable{
 
     public UserRoles getRoleById(String s) {
         return userDao.findOneById(Integer.parseInt(s), UserRoles.class);
+    }
+
+    public void saveRoleMapping(UserRoles selectedRole, List<ApplicationLinks> target) {
+        selectedRole.getApplicationLinks().clear();
+        selectedRole.getApplicationLinks().addAll(target);
+        userDao.update(selectedRole);
     }
 }

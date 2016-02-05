@@ -51,6 +51,10 @@ public class BaseDaoImpl implements BaseDao {
         entityManager.persist(userdetails);
     }
 
+    public <T> T merge(T whichObject){
+        return entityManager.merge(whichObject);
+    }
+
     @Override
     public <T> List<T> getAllElements(Class<T> ofWhat) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -58,5 +62,11 @@ public class BaseDaoImpl implements BaseDao {
         Root<T> userRolesRoot = criteriaQuery.from(ofWhat);
         criteriaQuery.select(userRolesRoot);
         return entityManager.createQuery(criteriaQuery).getResultList();
+    }
+
+    @Override
+    public <T> T update(T whichObject) {
+        return merge(whichObject);
+
     }
 }

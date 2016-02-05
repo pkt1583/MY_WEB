@@ -5,10 +5,15 @@
  */
 package com.test.controller;
 
+import com.test.dao.BaseDao;
 import com.test.domain.ApplicationLinks;
 import com.test.domain.UserRoles;
 import com.test.service.ApplicationService;
+import com.test.service.RoleService;
+import com.test.service.UserService;
 import com.test.web.model.RoleMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.event.ValueChangeEvent;
@@ -21,14 +26,20 @@ import java.util.List;
 @ApplicationScoped
 public class RoleMappingController {
 
+    protected final Logger logger= LoggerFactory.getLogger(getClass());
     @Inject
     private RoleMapping roleMapping;
+
+    @Inject
+    private UserService userService;
 
     @Inject
     private ApplicationService applicationService;
 
     public String mapApplicationsToRoles() {
         System.out.println("RoleMapping " + roleMapping);
+        UserRoles selectedRole=roleMapping.getSelectedRole();
+        userService.saveRoleMapping(selectedRole,roleMapping.getTarget());
         return "roleMapping";
     }
 
@@ -41,6 +52,5 @@ public class RoleMappingController {
         roleMapping.getSource().addAll(applicationLinkses);
         roleMapping.getTarget().clear();
         roleMapping.getTarget().addAll(userRoles.getApplicationLinks());
-        //roleMapping.setTarget(new ArrayList<ApplicationLinks>(userRoles.getApplicationLinks()));
     }
 }

@@ -1,5 +1,7 @@
 package com.test.dao;
 
+import com.test.domain.UserRoles;
+
 import java.util.List;
 
 public interface BaseDao {
@@ -11,4 +13,5 @@ public interface BaseDao {
 
     <T> List<T> getAllElements(Class<T> ofWhat);
 
+    <T> T update(T whichRole);
 }

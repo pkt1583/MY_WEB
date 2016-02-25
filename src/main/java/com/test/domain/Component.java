@@ -12,6 +12,9 @@ public  class Component {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int componentId;
 
+
+    private String componentName;
+
     @ManyToMany(mappedBy = "components")
     private List<ComponentRequest> componentRequests = new ArrayList<>();
 
@@ -29,5 +32,13 @@ public  class Component {
 
     public void setComponentRequests(List<ComponentRequest> componentRequests) {
         this.componentRequests = componentRequests;
+    }
+
+    public String getComponentName() {
+        return componentName;
+    }
+
+    public void setComponentName(String componentName) {
+        this.componentName = componentName;
     }
 }

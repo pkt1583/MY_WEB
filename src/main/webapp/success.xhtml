@@ -7,14 +7,14 @@
         >
 <ui:composition template="common.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form id="successsForm">
             <ui:param value="${authenticationController.loggedUser}" name="currentUser"/>
             <h:outputLabel value="Welcome #{currentUser.userId}. Hope that you will enjoy this site"/>
-            <ui:repeat value="${currentUser.userRoles}" var="userRoles">
+            <ui:repeat value="${currentUser.userRoles}" var="userRoles" varStatus="upperSatuts">
 
                 <ui:repeat value="${userRoles.applicationLinks.toArray()}" var="appLinks">
-                    <ui:repeat value="${appLinks}" var="app">
-                        <h:commandLink value="${app.linkDescription}" action="#{app.getLink()}"/>"/>
+                    <ui:repeat value="${appLinks}" var="app" varStatus="appLinkStatus">
+                        <h:commandLink  id="appLink_${appLinkStatus}"  value="${app.linkDescription}" action="#{app.getLink()}"/>"/>
                     </ui:repeat>
 
                 </ui:repeat>

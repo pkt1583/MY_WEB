@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+    <ui:composition template="common.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:panel header="Please Enter Component Details">
+                        
+                        <ui:repeat value="#{componentRequest.componentRequestList}" var="componentRequest">
+                            <table>
+                                <tr>
+                                    <td><h:outputLabel for="component"/></td>
+                                    <td><h:inputText id="component" value="#{componentRequest.component}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel for="componentNumber"/></td>
+                                    <td><h:inputSecret id="componentNumber" value="#{componentRequest.numberOfComponent}"/></td>
+                                </tr>
+                            </table>
+                        </ui:repeat>
+                        <td colspan="2">
+                            <h:commandLink value="Add More" action="#{componentRequest.add()}"></h:commandLink>
+                        </td>
+
+                    </p:panel>
+                </h:panelGrid>
+
+                <h:commandLink value="Create New User" action="newUser"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-        >
+>
 <ui:composition template="common.xhtml">
     <ui:define name="content">
         <h:form id="successsForm">
@@ -14,7 +14,8 @@
 
                 <ui:repeat value="${userRoles.applicationLinks.toArray()}" var="appLinks">
                     <ui:repeat value="${appLinks}" var="app" varStatus="appLinkStatus">
-                        <h:commandLink  id="appLink_${appLinkStatus}"  value="${app.linkDescription}" action="#{app.getLink()}"/>"/>
+                        <h:commandLink id="appLink_${appLinkStatus}" value="${app.linkDescription}"
+                                       action="#{app.getLink()}"/>"/>
                     </ui:repeat>
 
                 </ui:repeat>

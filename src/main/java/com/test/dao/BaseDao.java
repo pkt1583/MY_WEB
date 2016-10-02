@@ -1,7 +1,5 @@
 package com.test.dao;
 
-import com.test.domain.UserRoles;
-
 import java.util.List;
 
 public interface BaseDao {

@@ -8,13 +8,13 @@ import javax.ejb.Stateless;
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     @Override
-    public Userdetails getUserDetailsByUserName(String userName){
-        return (Userdetails) entityManager.createNamedQuery("userDetails.findByUserName").setParameter("userName",userName).getSingleResult();
+    public Userdetails getUserDetailsByUserName(String userName) {
+        return (Userdetails) entityManager.createNamedQuery("userDetails.findByUserName").setParameter("userName", userName).getSingleResult();
     }
 
     @Override
-    public Userdetails getUserById(Integer id){
-        return super.findOneById(id,Userdetails.class);
+    public Userdetails getUserById(Integer id) {
+        return super.findOneById(id, Userdetails.class);
     }
 
 }

@@ -4,31 +4,31 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
-import javax.ejb.EJB;
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.inject.Named;
-import javax.persistence.Basic;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Stateless(name = "baseDao")
+@Interceptors(SpringBeanAutowiringInterceptor.class)
 public class BaseDaoImpl implements BaseDao {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
-    @PersistenceContext(unitName = "mysqllocal")
+    @Resource(name = "hsqlDB")
     protected EntityManager entityManager;
 
     @Override
     public <T> T findOneById(Object userid, Class<T> domainClass) {
         T userdetails = null;
         try {
-            T testObj=entityManager.find(domainClass,userid);
+            T testObj = entityManager.find(domainClass, userid);
             userdetails = testObj;
         } catch (NoResultException nre) {
             logger.error("User [ " + userid + " ] not found in database");
@@ -37,11 +37,10 @@ public class BaseDaoImpl implements BaseDao {
     }
 
 
-
     @Override
     public <T> T findOneByExample(T domainClass, Class<T> domainClaz) {
-        Example example=Example.create(domainClass);
-        Session session= (Session) entityManager.getDelegate();
+        Example example = Example.create(domainClass);
+        Session session = (Session) entityManager.getDelegate();
         return (T) session.createCriteria(domainClaz).add(example).uniqueResult();
     }
 
@@ -51,7 +50,7 @@ public class BaseDaoImpl implements BaseDao {
         entityManager.persist(userdetails);
     }
 
-    public <T> T merge(T whichObject){
+    public <T> T merge(T whichObject) {
         return entityManager.merge(whichObject);
     }
 

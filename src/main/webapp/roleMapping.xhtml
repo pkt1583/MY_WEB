@@ -13,34 +13,34 @@
             <table>
                 <tr>
                     <td>
-                            <h:selectOneMenu converter="${userRoleConverter}" id="selectRole"
-                                             value="${roleMapping.selectedRole}"
-                                             valueChangeListener="${roleMappingController.roleChanged}">
-                                <a4j:ajax event="valueChange" render="appLinkPanel" execute="@this"/>
-                                <f:selectItems value="${roleMapping.userRoles}" var="userroleMap"
-                                               itemValue="${userroleMap}"
-                                               itemLabel="${userroleMap.roleName}"></f:selectItems>
-                            </h:selectOneMenu>
+                        <h:selectOneMenu converter="${userRoleConverter}" id="selectRole"
+                                         value="${roleMapping.selectedRole}"
+                                         valueChangeListener="${roleMappingController.roleChanged}">
+                            <a4j:ajax event="valueChange" render="appLinkPanel" execute="@this"/>
+                            <f:selectItems value="${roleMapping.userRoles}" var="userroleMap"
+                                           itemValue="${userroleMap}"
+                                           itemLabel="${userroleMap.roleName}"></f:selectItems>
+                        </h:selectOneMenu>
 
                     </td>
                 </tr>
                 <tr>
                     <td>
-                            <a4j:outputPanel id="appLinkPanel" layout="block">
-                                <p:pickList id="appLinks" value="#{roleMapping.target}"
-                                            sourceCaption="Available Application"
-                                            targetCaption="Selected Application" listWidth="165px" listHeight="100px"
-                                            orderable="true" converter="${applicationLinkConverter}">
-                                    <f:selectItems value="#{roleMapping.source}" var="userapplications"
-                                                   itemValue="#{userapplications}"
-                                                   itemLabel="#{userapplications.link}"/>
-                                </p:pickList>
-                            </a4j:outputPanel>
+                        <a4j:outputPanel id="appLinkPanel" layout="block">
+                            <p:pickList id="appLinks" value="#{roleMapping.target}"
+                                        sourceCaption="Available Application"
+                                        targetCaption="Selected Application" listWidth="165px" listHeight="100px"
+                                        orderable="true" converter="${applicationLinkConverter}">
+                                <f:selectItems value="#{roleMapping.source}" var="userapplications"
+                                               itemValue="#{userapplications}"
+                                               itemLabel="#{userapplications.link}"/>
+                            </p:pickList>
+                        </a4j:outputPanel>
                     </td>
                 </tr>
             </table>
             <h:commandButton action="${roleMappingController.mapApplicationsToRoles()}" value="submit"/>
-            <h:messages />
+            <h:messages/>
         </h:form>
     </ui:define>
 </ui:composition>

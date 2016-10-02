@@ -3,7 +3,6 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 <h:form>
 
@@ -25,10 +24,11 @@
         </tr>
 
         <tr>
-            <td> Select Role : </td>
+            <td> Select Role :</td>
             <td><h:selectOneMenu value="${newUser.selectedRole}" converter="#{userRoleConverter}">
-                <f:selectItems value="${newUser.userRoles}" var="userRole" itemValue="${userRole}" itemLabel="${userRole.roleName}"></f:selectItems>
-            </h:selectOneMenu> </td>
+                <f:selectItems value="${newUser.userRoles}" var="userRole" itemValue="${userRole}"
+                               itemLabel="${userRole.roleName}"></f:selectItems>
+            </h:selectOneMenu></td>
         </tr>
 
 

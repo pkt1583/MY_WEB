@@ -11,7 +11,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <p:panel header="Please Enter Component Details">
-                        
+
                         <ui:repeat value="#{componentRequest.componentRequestList}" var="componentRequest">
                             <table>
                                 <tr>
@@ -20,7 +20,8 @@
                                 </tr>
                                 <tr>
                                     <td><h:outputLabel for="componentNumber"/></td>
-                                    <td><h:inputSecret id="componentNumber" value="#{componentRequest.numberOfComponent}"/></td>
+                                    <td><h:inputSecret id="componentNumber"
+                                                       value="#{componentRequest.numberOfComponent}"/></td>
                                 </tr>
                             </table>
                         </ui:repeat>

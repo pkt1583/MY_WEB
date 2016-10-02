@@ -29,12 +29,6 @@ public class Userdetails implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "USER_ROLE", schema = "assign", joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "roleId")}
-    )
-    private List<UserRoles> userRoles=new ArrayList<>();
 
     public String getUserId() {
         return userId;
@@ -89,11 +83,4 @@ public class Userdetails implements Serializable {
         return result;
     }
 
-    public List<UserRoles> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(List<UserRoles> userRoles) {
-        this.userRoles = userRoles;
-    }
 }

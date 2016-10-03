@@ -6,17 +6,16 @@
 
     <persistence-unit name="hsqlDB" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>com.test.domain.Userdetails</class>
-        <!--<properties>
-            <property name="javax.persistence.jdbc.driver" value="c"/>
+        <class>com.test.domain.Userdetails</class><properties>
+         <!--   <property name="javax.persistence.jdbc.driver" value="c"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:/mnt/D-Drive/code/MY_WEB/MY_WEB/src/main/testdb;shutdown=true"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>-->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.flushMode" value="FLUSH_AUTO" />
-        </properties>-->
+        </properties>
     </persistence-unit>
 
 </persistence>

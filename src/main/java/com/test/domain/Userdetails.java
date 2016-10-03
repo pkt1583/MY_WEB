@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "userdetails", schema = "assign")
+@Table(name = "userdetails")
 @NamedQueries(
         @NamedQuery(name = "userDetails.findByUserName", query = "SELECT U FROM Userdetails U WHERE U.userId=:userName")
 

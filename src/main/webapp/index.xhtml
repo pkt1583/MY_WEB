@@ -3,7 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
     <ui:composition template="common.xhtml">
@@ -32,7 +32,7 @@
                         </table>
                     </p:panel>
                 </h:panelGrid>
-
+                <h:commandButton value="Register" type="submit" action="newUserCreate"/>
             </h:form>
         </ui:define>
     </ui:composition>

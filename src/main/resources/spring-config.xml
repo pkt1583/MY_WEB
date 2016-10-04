@@ -21,6 +21,11 @@
     <bean id="entityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
        <!-- <property name="persistenceUnitName" value="hsqlDB"/>-->
         <property name="persistenceUnitManager" ref="persistanceUnit"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="HSQL"/>
+            </bean>
+        </property>
     </bean>
 
 </beans>

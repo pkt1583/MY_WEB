@@ -10,7 +10,7 @@
         </layout>
     </appender>
     <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
-        <param name="file" value="C:\\logs\\mylogs\\logs.log"/>
+        <param name="file" value="/var/tmp/logs.log"/>
         <param name="append" value="true"/>
         <param name="Threshold" value="TRACE"/>
         <param name="MaxFileSize" value="5MB"/>
@@ -21,11 +21,22 @@
     </appender>
 
     <logger name="org.hibernate" additivity="false">
-        <level value="TRACE"/>
+        <level value="OFF"/>
         <appender-ref ref="console"/>
         <appender-ref ref="fileAppender"/>
     </logger>
 
+    <logger name="org.springframework" additivity="false">
+        <level value="OFF"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="fileAppender"/>
+    </logger>
+
+    <logger name="com.sun.xml.bind" additivity="false">
+        <level value="OFF"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="fileAppender"/>
+    </logger>
     <logger name="javax.faces" additivity="false">
         <level value="TRACE"/>
         <appender-ref ref="console"/>

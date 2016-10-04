@@ -50,4 +50,5 @@ public class AuthenticationController {
     public Userdetails getLoggedUser() {
         return this.user;
     }
+
 }

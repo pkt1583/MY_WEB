@@ -72,6 +72,12 @@
             <artifactId>primefaces</artifactId>
             <version>5.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.primefaces.extensions/all-themes -->
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.8</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

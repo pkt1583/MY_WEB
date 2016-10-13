@@ -4,9 +4,12 @@
 
 <html xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
     <ui:composition template="common.xhtml">
+        <f:facet name="header" >
+            Please login
+        </f:facet>
         <ui:define name="content">
             <h:form>
                 <h:panelGrid columns="2">

@@ -4,8 +4,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition template="common.xhtml">
+        <f:facet name="header" >
+            Please login
+        </f:facet>
+        <ui:define name="content">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:panel header="Please Enter Login details to the System">
+                        <table>
+                            <tr>
+                                <td><h:outputLabel for="userId"/></td>
+                                <td><h:inputText id="userId" value="#{newUser.username}"/></td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel for="password"/></td>
+                                <td><h:inputSecret id="password" value="#{newUser.password}"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h:commandButton value="Login" type="submit"
+                                                     action="#{authenticationController.authenticate()}">
+                                        <h:outputText>Logout</h:outputText>
+
+                                    </h:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </p:panel>
+                </h:panelGrid>
+                <h:commandButton value="Register" type="submit" action="newUserCreate"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>

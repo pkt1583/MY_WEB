@@ -8,6 +8,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>com.project.domain.Userdetails</class>
         <class>com.project.domain.Address</class>
+        <class>com.project.domain.ProductCategory</class>
         <properties>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

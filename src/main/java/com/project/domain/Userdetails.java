@@ -8,10 +8,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "userdetails")
-@NamedQueries(
+/*@NamedQueries(
         @NamedQuery(name = "userDetails.findByUserName", query = "SELECT U FROM Userdetails U WHERE U.userId=:userName")
 
-)
+)*/
 @Model
 @SessionScoped
 public class Userdetails implements Serializable {

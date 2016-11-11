@@ -7,7 +7,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named("newUserController")
 @ApplicationScoped
 public class NewUserController {
 

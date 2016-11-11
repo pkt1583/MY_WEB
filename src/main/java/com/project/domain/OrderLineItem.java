@@ -2,6 +2,7 @@ package com.project.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 //should this be entity
@@ -11,6 +12,9 @@ public class OrderLineItem {
     private String orderLineItemId;
     @OneToOne
     private Product product;
+
+    @ManyToOne
+    private ProductOrder productOrder;
 
     public Product getProduct() {
         return product;

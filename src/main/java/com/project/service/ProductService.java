@@ -8,10 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 @Stateless(name = "ProductService")
-public class DefaultProductService {
+public class ProductService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
 
     public List<Product> getProductByCategory(ProductCategory productCategory) {
         return null;

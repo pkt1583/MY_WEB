@@ -3,7 +3,6 @@ package com.project.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -11,9 +10,7 @@ public class Payment {
     @Id
     private String paymentId;
     @OneToOne
-    private Order order;
-    @ManyToOne
-    private Customer customer;
+    private ProductOrder productOrder;
 
     public String getPaymentId() {
         return paymentId;
@@ -23,20 +20,12 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public ProductOrder getProductOrder() {
+        return productOrder;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setProductOrder(ProductOrder productOrder) {
+        this.productOrder = productOrder;
     }
 
 }

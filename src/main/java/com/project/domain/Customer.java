@@ -13,14 +13,14 @@ public class Customer {
     private List<Payment> payments;
 
     @OneToMany
-    private List<Order> orders;
+    private List<ProductOrder> productOrders;
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<ProductOrder> getProductOrders() {
+        return productOrders;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setProductOrders(List<ProductOrder> productOrders) {
+        this.productOrders = productOrders;
     }
 
     public List<Payment> getPayments() {

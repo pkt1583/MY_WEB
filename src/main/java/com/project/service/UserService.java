@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@Named(value = "userSerivce")
+//@Named(value = "userSerivce")
 @ApplicationScoped
 public class UserService implements Serializable {
 

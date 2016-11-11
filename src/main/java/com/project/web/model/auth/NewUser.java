@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Model
-@RequestScoped
+/*@Model
+@RequestScoped*/
 public class NewUser {
     private String username;
     @Inject

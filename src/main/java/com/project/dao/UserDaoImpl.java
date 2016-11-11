@@ -4,7 +4,7 @@ import com.project.domain.Userdetails;
 
 import javax.ejb.Stateless;
 
-@Stateless(name = "userDao")
+//@Stateless(name = "userDao")
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     @Override

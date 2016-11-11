@@ -16,7 +16,6 @@ import javax.inject.Named;
 /**
  *
  */
-@Named("authenticationController")
 @ApplicationScoped
 public class AuthenticationController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());

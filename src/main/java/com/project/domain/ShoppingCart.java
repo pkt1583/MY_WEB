@@ -20,7 +20,7 @@ public class ShoppingCart {
 
 
     @OneToOne
-    private Order order;
+    private ProductOrder productOrder;
 
     public Customer getCustomer() {
         return customer;
@@ -38,12 +38,12 @@ public class ShoppingCart {
         this.products = products;
     }
 
-    public Order getOrder() {
-        return order;
+    public ProductOrder getProductOrder() {
+        return productOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setProductOrder(ProductOrder productOrder) {
+        this.productOrder = productOrder;
     }
 
     public String getShopppingCardId() {

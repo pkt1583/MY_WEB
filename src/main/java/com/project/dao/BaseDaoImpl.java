@@ -16,7 +16,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-@Stateless(name = "baseDao")
+//@Stateless(name = "baseDao")
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 public class BaseDaoImpl implements BaseDao {
 

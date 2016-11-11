@@ -6,7 +6,7 @@ import com.project.domain.Product;
 import javax.ejb.Stateless;
 
 @Stateless(name = "InventoryService")
-public class DefaultInventoryService  {
+public class InventoryService {
 
     public Inventory getProductInventoryDetails(Product product) {
         //This will check Manufacturer inventory as well as BigSmokes Inventory

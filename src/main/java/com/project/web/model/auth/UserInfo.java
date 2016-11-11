@@ -7,8 +7,8 @@ import java.io.Serializable;
 /**
  * Created by pankaj on 16-05-2015.
  */
-@Model
-@SessionScoped
+/*@Model
+@SessionScoped*/
 public class UserInfo implements Serializable {
     private String userId;
     private String password;

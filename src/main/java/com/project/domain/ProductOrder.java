@@ -1,18 +1,17 @@
 package com.project.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Order {
+public class ProductOrder {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String OrderId;
-    @OneToOne
-    private Payment payment;
-    @OneToMany
+   /* @OneToOne
+    private Payment payment;*/
+
+    /*@OneToMany
     private List<OrderLineItem> orderLineItems;
 
     public List<OrderLineItem> getOrderLineItems() {
@@ -21,15 +20,8 @@ public class Order {
 
     public void setOrderLineItems(List<OrderLineItem> orderLineItems) {
         this.orderLineItems = orderLineItems;
-    }
+    }*/
 
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
-    }
 
     public String getOrderId() {
         return OrderId;

@@ -12,7 +12,6 @@ public class CutomerPayment {
     @OneToOne
     private Customer customer;
     @OneToOne
-
     private Payment payment;
 
     public Customer getCustomer() {

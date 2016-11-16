@@ -15,6 +15,7 @@ public class ProductCategory {
 
     @Basic
     private String description;
+
     @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
     private List<Product> products = new ArrayList();
 

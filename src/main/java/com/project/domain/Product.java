@@ -7,19 +7,31 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String product_id;
-
     @Basic
-    private String name;
 
+    private String name;
     @Basic
     private String description;
-
     @ManyToOne
-    @JoinColumn(name = "category_id")
     private ProductCategory category;
-
     @OneToOne
     private Inventory inventory;
+
+    public String getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
 
     public ProductCategory getCategory() {
         return category;

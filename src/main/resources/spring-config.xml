@@ -17,6 +17,9 @@
             <value>classpath*:persistence.xml</value>
         </property>
         <property name="defaultDataSource" ref="dataSource"/>
+        <property name="validationMode" value="AUTO"/>
+        <property name="packagesToScan" value="com.project.domain"/>
+        <property name="defaultPersistenceUnitName" value="hsqlDB"/>
     </bean>
 
     <bean id="entityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

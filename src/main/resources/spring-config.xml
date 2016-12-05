@@ -12,6 +12,9 @@
         <property name="username" value="sa"/>
         <property name="password" value="pankaj"/>
     </bean>
+
+
+
     <bean id="persistanceUnit" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
         <property name="defaultDataSource" ref="dataSource"/>
         <property name="validationMode" value="AUTO"/>

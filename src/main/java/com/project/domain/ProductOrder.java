@@ -6,8 +6,8 @@ import java.util.List;
 @Entity
 public class ProductOrder {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String OrderId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer OrderId;
    /* @OneToOne
     private Payment payment;*/
 
@@ -23,11 +23,11 @@ public class ProductOrder {
     }*/
 
 
-    public String getOrderId() {
+    public Integer getOrderId() {
         return OrderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(Integer orderId) {
         OrderId = orderId;
     }
 }

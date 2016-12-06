@@ -6,11 +6,18 @@
     <context:component-scan base-package="com.project.dao"/>
     <context:annotation-config/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="url" value="jdbc:hsqldb:file:/mnt/D-Drive/code/MY_WEB/MY_Assign/src/main/db/assign;shutdown=true"/>
+   <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="url" value="jdbc:hsqldb:file:/mnt/D-Drive/coqde/MY_WEB/MY_Assign/src/main/db/assign;shutdown=true"/>
         <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver"/>
         <property name="username" value="sa"/>
         <property name="password" value="pankaj"/>
+    </bean>-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/assign"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value="pkt1583"/>
     </bean>
 
 
@@ -27,7 +34,7 @@
         <property name="persistenceUnitManager" ref="persistanceUnit"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="database" value="HSQL"/>
+                <property name="database" value="MYSQL"/>
             </bean>
         </property>
     </bean>

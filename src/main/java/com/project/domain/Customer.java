@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class Customer {
     @Id
-    private String CustomerId;
+    private Integer CustomerId;
     @OneToMany
     private List<Payment> payments;
 
@@ -32,11 +32,11 @@ public class Customer {
         this.payments = payments;
     }
 
-    public String getCustomerId() {
+    public Integer getCustomerId() {
         return CustomerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(Integer customerId) {
         CustomerId = customerId;
     }
 }

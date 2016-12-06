@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Inventory implements Serializable {
 
     @Id
-    private String InventoryId;
+    private Integer InventoryId;
     @Basic
     private int currentStock;
 
@@ -33,11 +33,11 @@ public class Inventory implements Serializable {
         this.currentStock = currentStock;
     }
 
-    public String getInventoryId() {
+    public Integer getInventoryId() {
         return InventoryId;
     }
 
-    public void setInventoryId(String inventoryId) {
+    public void setInventoryId(Integer inventoryId) {
         InventoryId = inventoryId;
     }
 }

@@ -8,15 +8,15 @@ import javax.persistence.OneToOne;
 @Entity
 public class Payment {
     @Id
-    private String paymentId;
+    private Integer paymentId;
     @OneToOne
     private ProductOrder productOrder;
 
-    public String getPaymentId() {
+    public Integer getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(String paymentId) {
+    public void setPaymentId(Integer paymentId) {
         this.paymentId = paymentId;
     }
 

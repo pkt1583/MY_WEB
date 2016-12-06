@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class OrderLineItem {
     @Id
-    private String orderLineItemId;
+    private Integer orderLineItemId;
     @OneToOne
     private Product product;
 
@@ -24,11 +24,11 @@ public class OrderLineItem {
         this.product = product;
     }
 
-    public String getOrderLineItemId() {
+    public Integer getOrderLineItemId() {
         return orderLineItemId;
     }
 
-    public void setOrderLineItemId(String orderLineItemId) {
+    public void setOrderLineItemId(Integer orderLineItemId) {
         this.orderLineItemId = orderLineItemId;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class ShoppingCart {
     @Id
-    private String shopppingCardId;
+    private Integer shopppingCardId;
 
     @OneToOne
     private Customer customer;
@@ -46,11 +46,11 @@ public class ShoppingCart {
         this.productOrder = productOrder;
     }
 
-    public String getShopppingCardId() {
+    public Integer getShopppingCardId() {
         return shopppingCardId;
     }
 
-    public void setShopppingCardId(String shopppingCardId) {
+    public void setShopppingCardId(Integer shopppingCardId) {
         this.shopppingCardId = shopppingCardId;
     }
 

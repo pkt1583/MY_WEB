@@ -5,8 +5,8 @@ import javax.persistence.*;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String product_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer product_id;
     @Basic
 
     private String name;
@@ -17,11 +17,11 @@ public class Product {
     @OneToOne
     private Inventory inventory;
 
-    public String getProduct_id() {
+    public Integer getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(String product_id) {
+    public void setProduct_id(Integer product_id) {
         this.product_id = product_id;
     }
 
@@ -57,11 +57,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getId() {
+    public Integer getId() {
         return product_id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.product_id = id;
     }
 }

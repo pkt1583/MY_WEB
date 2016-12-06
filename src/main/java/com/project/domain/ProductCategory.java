@@ -7,8 +7,8 @@ import java.util.List;
 @Entity
 public class ProductCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String category_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer category_id;
 
     @Basic
     private String name;
@@ -19,11 +19,11 @@ public class ProductCategory {
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Product> products = new ArrayList();
 
-    public String getCategory_id() {
+    public Integer getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(String category_id) {
+    public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
     }
 
@@ -51,11 +51,11 @@ public class ProductCategory {
         this.description = description;
     }
 
-    public String getId() {
+    public Integer getId() {
         return category_id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.category_id = id;
     }
 }

@@ -26,7 +26,7 @@ public class Userdetails implements Serializable {
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
    @Embedded
    private Address address;
@@ -50,11 +50,11 @@ public class Userdetails implements Serializable {
     }
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

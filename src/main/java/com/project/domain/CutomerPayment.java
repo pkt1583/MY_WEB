@@ -6,8 +6,8 @@ import javax.persistence.*;
 public class CutomerPayment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String customerPaymentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer customerPaymentId;
 
     @OneToOne
     private Customer customer;
@@ -30,11 +30,11 @@ public class CutomerPayment {
         this.payment = payment;
     }
 
-    public String getCustomerPaymentId() {
+    public Integer getCustomerPaymentId() {
         return customerPaymentId;
     }
 
-    public void setCustomerPaymentId(String customerPaymentId) {
+    public void setCustomerPaymentId(Integer customerPaymentId) {
         this.customerPaymentId = customerPaymentId;
     }
 }

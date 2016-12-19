@@ -55,9 +55,9 @@
             org.springframework.web.context.request.RequestContextListener
         </listener-class>
     </listener>
-    <listener>
+   <!--<listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
+    </listener>-->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/</url-pattern>

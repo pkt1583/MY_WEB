@@ -21,7 +21,7 @@
     </context-param>
     <context-param>
         <param-name>locatorFactorySelector</param-name>
-        <param-value>classpath:beanRefFactory.xml</param-value>
+        <param-value>classpath:beanRefContext.xml</param-value>
     </context-param>
     <context-param>
         <param-name>parentContextKey</param-name>

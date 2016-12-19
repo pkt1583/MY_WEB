@@ -59,7 +59,12 @@
     </logger>
 
     <logger name="org.jboss.weld" additivity="false">
-        <level value="TRACE"/>
+        <level value="OFF"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="fileAppender"/>
+    </logger>
+    <logger name="javax.enterprise.system" additivity="false">
+        <level value="OFF"/>
         <appender-ref ref="console"/>
         <appender-ref ref="fileAppender"/>
     </logger>

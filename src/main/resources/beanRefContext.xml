@@ -7,7 +7,7 @@
     <bean id="persistenceContext" class="org.springframework.context.support.ClassPathXmlApplicationContext">
         <constructor-arg>
             <list>
-                <value>spring-config.xml</value>
+                <value>classpath:*spring-config.xml</value>
             </list>
         </constructor-arg>
     </bean>

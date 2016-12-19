@@ -13,23 +13,15 @@
         <ui:define name="content">
             <h:form>
                 <h:panelGrid columns="2">
-                    <p:panel header="Please Enter Login details to the System">
+                    <p:panel header="Please Select a category">
                         <table>
                             <tr>
-                                <td><h:outputLabel for="userId"/></td>
-                                <td><h:inputText id="userId" value="#{userInfo.userId}"/></td>
+                                <td><h:commandLink action="categoryAdd.xhtml" > Add Category</h:commandLink></td>
                             </tr>
                             <tr>
-                                <td><h:outputLabel for="password"/></td>
-                                <td><h:inputSecret id="password" value="#{userInfo.password}"/></td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <h:commandButton value="Login" type="submit"
-                                                     action="#{authenticationController.authenticate()}">
-                                        <h:outputText>Logout</h:outputText>
-
-                                    </h:commandButton>
                                 </td>
                             </tr>
                         </table>

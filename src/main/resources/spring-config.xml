@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <context:component-scan base-package="com.project.dao"/>
     <context:annotation-config/>
-
+    <tx:annotation-driven transaction-manager="transactionManager"/>
    <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="url" value="jdbc:hsqldb:file:/mnt/D-Drive/coqde/MY_WEB/MY_Assign/src/main/db/assign;shutdown=true"/>
         <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver"/>
@@ -20,16 +20,17 @@
         <property name="password" value="pkt1583"/>
     </bean>
 
-
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
     <bean id="persistanceUnit" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
         <property name="defaultDataSource" ref="dataSource"/>
         <property name="validationMode" value="AUTO"/>
         <property name="packagesToScan" value="com.project.domain"/>
-        <property name="defaultPersistenceUnitName" value="hsqlDB"/>
+
+        <!--<property name="defaultPersistenceUnitName" value="hsqlDB"/>-->
     </bean>
 
-    <bean id="entityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
        <!-- <property name="persistenceUnitName" value="hsqlDB"/>-->
         <property name="persistenceUnitManager" ref="persistanceUnit"/>
         <property name="jpaVendorAdapter">
@@ -37,6 +38,10 @@
                 <property name="database" value="MYSQL"/>
             </bean>
         </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
 </beans>

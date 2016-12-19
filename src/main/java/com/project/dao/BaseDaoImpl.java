@@ -4,25 +4,32 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-//@Stateless(name = "baseDao")
-@Interceptors(SpringBeanAutowiringInterceptor.class)
-public class BaseDaoImpl implements BaseDao {
+@Repository
+public class BaseDaoImpl implements BaseDao  {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
-    @Resource(name = "hsqlDB")
+
+
+    @PersistenceContext
     protected EntityManager entityManager;
+
 
     @Override
     public <T> T findOneById(Object userid, Class<T> domainClass) {

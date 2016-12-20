@@ -4,11 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="persistenceContext" class="org.springframework.context.support.ClassPathXmlApplicationContext">
+    <bean id="myContext" class="org.springframework.context.support.ClassPathXmlApplicationContext">
         <constructor-arg>
-            <list>
-                <value>classpath:*spring-config.xml</value>
-            </list>
+                <value>spring-config.xml</value>
         </constructor-arg>
     </bean>
 

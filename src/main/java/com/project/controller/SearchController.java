@@ -5,6 +5,7 @@ import com.project.domain.ProductCategory;
 import com.project.service.ProductService;
 import com.project.web.model.ProductCategoryDto;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,7 +17,7 @@ import java.util.List;
 public class SearchController {
 
 
-    @Inject
+    @EJB
     private ProductService productService;
 
     public String getProductCategories() {

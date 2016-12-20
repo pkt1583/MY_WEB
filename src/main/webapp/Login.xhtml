@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+    <ui:composition template="common.xhtml">
+        <f:facet name="header" >
+            Please login
+        </f:facet>
+        <ui:define name="content">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:panel header="Please Enter Login details to the System">
+                        <table>
+                            <tr>
+                                <td><h:outputLabel for="userId"/></td>
+                                <td><h:inputText id="userId" value="#{userInfo.userId}"/></td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel for="password"/></td>
+                                <td><h:inputSecret id="password" value="#{userInfo.password}"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h:commandButton value="Login" type="submit"
+                                                     action="#{authenticationController.authenticate()}">
+                                        <h:outputText>Logout</h:outputText>
+
+                                    </h:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </p:panel>
+                </h:panelGrid>
+                <h:commandButton value="Register" type="submit" action="newUserCreate"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

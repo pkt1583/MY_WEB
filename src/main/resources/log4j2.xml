@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="TRACE">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+
+        <logger name="org.hibernate" level="TRACE" >
+            <appender-ref ref="console"/>
+        </logger>
+
+        <logger name="org.springframework" level="TRACE" >
+            <appender-ref ref="console"/>
+        </logger>
+
+        <logger name="com.sun.xml.bind" level="OFF" >
+            <appender-ref ref="console"/>
+        </logger>
+        <logger name="javax.faces" level="TRACE" >
+            <appender-ref ref="console"/>
+        </logger>
+        <logger name="org.hibernate.SQL" level="TRACE" >
+            <appender-ref ref="console"/>
+        </logger>
+        <logger name="log4j.logger.org.hibernate.type"  level="TRACE" >
+            <appender-ref ref="console"/>
+        </logger>
+
+        <logger name="org.jboss.weld" level="OFF" >
+            <appender-ref ref="console"/>
+        </logger>
+        <logger name="javax.enterprise.system" level="OFF" >
+            <appender-ref ref="console"/>
+        </logger>
+
+        <Root level="TRACE">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import com.project.domain.Product;
 import com.project.domain.ProductCategory;
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 import org.springframework.stereotype.Repository;
@@ -20,5 +21,11 @@ public class ProductDao  {
 
     public List<ProductCategory> getAllCategories() {
         return baseDao.getAllElements(ProductCategory.class);
+    }
+
+    public List<Product> getProductByCategoryId(Integer productCategoryId) {
+        ProductCategory productCategory=new ProductCategory();
+        productCategory= baseDao.findOneById(productCategoryId,ProductCategory.class);
+       return productCategory.getProducts();
     }
 }

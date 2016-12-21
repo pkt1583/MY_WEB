@@ -22,8 +22,9 @@ public class ProductService {
     @Inject
     private ProductDao productDao;
 
-    public List<Product> getProductByCategory(ProductCategory productCategory) {
-        return null;
+    public List<Product> getProductByCategory(Integer productCategoryId) {
+        List<Product> products=productDao.getProductByCategoryId(productCategoryId);
+        return products;
     }
 
     public List<ProductCategory> getAllCategories() {
@@ -38,6 +39,7 @@ public class ProductService {
             ProductCategoryDto productCategoryDto = new ProductCategoryDto();
             productCategoryDto.setCategoryId(productCategory.getCategory_id());
             productCategoryDto.setCategoryName(productCategory.getName());
+            productCategoryDtos.add(productCategoryDto);
         });
         return productCategoryDtos;
     }

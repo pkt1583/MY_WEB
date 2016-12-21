@@ -17,13 +17,14 @@ import java.util.List;
 
 @Named
 @RequestScoped
-public class SearchController {
+public class ProductController {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
     private List<ProductCategoryDto> productCategories;
     private List<Product> products = new ArrayList<>();
     private Product selectedProduct = new Product();
     private int selectedProductCategory;
+    private Product detailedProduct;
     @EJB
     private ProductService productService;
 
@@ -71,4 +72,17 @@ public class SearchController {
         this.products.addAll(products);
     }
 
+
+    public void populateProductDetails(Integer productId){
+        Product product=productService.getProductById(productId);
+        this.detailedProduct=product;
+    }
+
+    public Product getDetailedProduct() {
+        return detailedProduct;
+    }
+
+    public void setDetailedProduct(Product detailedProduct) {
+        this.detailedProduct = detailedProduct;
+    }
 }

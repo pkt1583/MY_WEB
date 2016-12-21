@@ -28,4 +28,8 @@ public class ProductDao  {
         productCategory= baseDao.findOneById(productCategoryId,ProductCategory.class);
        return productCategory.getProducts();
     }
+
+    public Product getProductById(Integer productId) {
+        return baseDao.findOneById(productId,Product.class);
+    }
 }

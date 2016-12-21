@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class ShoppingCart {
@@ -14,13 +14,18 @@ public class ShoppingCart {
 
     @OneToOne
     private Customer customer;
-
     @OneToMany
-    private List<Product> products=new ArrayList<>();
-
-
+    private Set<OrderLineItem> orderLineItems = new HashSet<>();
     @OneToOne
     private ProductOrder productOrder;
+
+    public Set<OrderLineItem> getOrderLineItems() {
+        return orderLineItems;
+    }
+
+    public void setOrderLineItems(Set<OrderLineItem> orderLineItems) {
+        this.orderLineItems = orderLineItems;
+    }
 
     public Customer getCustomer() {
         return customer;
@@ -30,13 +35,6 @@ public class ShoppingCart {
         this.customer = customer;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 
     public ProductOrder getProductOrder() {
         return productOrder;
@@ -54,7 +52,8 @@ public class ShoppingCart {
         this.shopppingCardId = shopppingCardId;
     }
 
-    public void addProduct(Product product) {
-        this.products.add(product);
+
+    public void addOrderLineItem(OrderLineItem orderLineItem) {
+        this.orderLineItems.add(orderLineItem);
     }
 }

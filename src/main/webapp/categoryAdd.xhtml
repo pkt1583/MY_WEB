@@ -17,16 +17,16 @@
                         <table>
                             <tr>
                                 <td><h:outputLabel for="Category"/></td>
-                                <td><h:selectOneMenu id="Category"  value="#{searchController.selectedProductCategory}" >
-                                    <f:selectItems value="#{searchController.productCategories}" var="categories" itemLabel="#{categories.categoryName}" itemValue="#{categories.categoryId}"/>
+                                <td><h:selectOneMenu id="Category"  value="#{productController.selectedProductCategory}" >
+                                    <f:selectItems value="#{productController.productCategories}" var="categories" itemLabel="#{categories.categoryName}" itemValue="#{categories.categoryId}"/>
                                 </h:selectOneMenu>
                                 </td>
-                                <td><h:commandLink value="ShowProducts" action="#{searchController.getProducts()}"/> </td>
+                                <td><h:commandLink value="ShowProducts" action="#{productController.getProducts()}"/> </td>
                             </tr>
                             <tr>
                                 <td><h:outputLabel for="Products"/> </td>
-                                <td><h:selectOneListbox id="Products" value="#{searchController.selectedProduct}" >
-                                    <f:selectItems value="#{searchController.products}" var="product" itemLabel="#{product.name}" itemValue="#{product.id}"/>
+                                <td><h:selectOneListbox id="Products" value="#{productController.selectedProduct}" >
+                                    <f:selectItems value="#{productController.products}" var="product" itemLabel="#{product.name}" itemValue="#{product.id}"/>
                                 </h:selectOneListbox>
                                 </td>
                             </tr>

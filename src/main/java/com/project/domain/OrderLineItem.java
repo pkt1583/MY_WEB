@@ -15,6 +15,7 @@ public class OrderLineItem {
 
     @ManyToOne
     private ProductOrder productOrder;
+    private Integer quantity;
 
     public Product getProduct() {
         return product;
@@ -30,5 +31,13 @@ public class OrderLineItem {
 
     public void setOrderLineItemId(Integer orderLineItemId) {
         this.orderLineItemId = orderLineItemId;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
     }
 }

@@ -43,4 +43,8 @@ public class ProductService {
         });
         return productCategoryDtos;
     }
+
+    public Product getProductById(Integer productId) {
+        return productDao.getProductById(productId);
+    }
 }

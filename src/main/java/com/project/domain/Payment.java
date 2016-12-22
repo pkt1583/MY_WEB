@@ -3,6 +3,7 @@ package com.project.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -11,6 +12,8 @@ public class Payment {
     private Integer paymentId;
     @OneToOne
     private ProductOrder productOrder;
+    @ManyToOne
+    private PaymentType paymentType;
 
     public Integer getPaymentId() {
         return paymentId;
@@ -28,4 +31,11 @@ public class Payment {
         this.productOrder = productOrder;
     }
 
+    public void setPaymentType(PaymentType paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public PaymentType getPaymentType() {
+        return paymentType;
+    }
 }

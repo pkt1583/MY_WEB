@@ -16,6 +16,7 @@ public class ShoppingCart {
     private Customer customer;
     @OneToMany
     private Set<OrderLineItem> orderLineItems = new HashSet<>();
+
     @OneToOne
     private ProductOrder productOrder;
 
@@ -55,5 +56,9 @@ public class ShoppingCart {
 
     public void addOrderLineItem(OrderLineItem orderLineItem) {
         this.orderLineItems.add(orderLineItem);
+    }
+
+    public void copyTo(ShoppingCart shoppingCart1) {
+        //deep copy everything from this to passed
     }
 }

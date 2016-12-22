@@ -7,7 +7,7 @@ public interface BaseDao {
 
     <T> T findOneByExample(T domainClass, Class<T> domainClaz);
 
-    <T> void save(T userdetails);
+    <T> T save(T userdetails);
 
     <T> List<T> getAllElements(Class<T> ofWhat);
 

@@ -12,11 +12,16 @@ public class InventoryService {
 
     public Inventory getProductInventoryDetails(Product product) {
         //This will check Manufacturer inventory as well as BigSmokes Inventory
-        return null;
+        return new Inventory();
     }
 
-    public boolean isProductAvailable(Product product) {
+    public synchronized Inventory isProductAvailable(Product product) {
         Inventory inventory=getProductInventoryDetails(product);
-        return false;
+        return inventory;
+    }
+
+    public void updateProduct(Inventory inventory,Integer quantity) {
+        inventory.getProduct().setQuatity(quantity);
+        //find product and reduce inventory by 1
     }
 }

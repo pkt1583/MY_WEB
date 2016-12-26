@@ -6,13 +6,13 @@ import javax.persistence.Entity;
 @Entity
 public class DebitCardPaymentType extends PaymentType {
     @Basic
-    private String debitCardNumber;
+    private String name;
 
-    public String getDebitCardNumber() {
-        return debitCardNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setDebitCardNumber(String debitCardNumber) {
-        this.debitCardNumber = debitCardNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 }

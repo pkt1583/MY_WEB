@@ -55,7 +55,7 @@ public class BaseDaoImpl implements BaseDao  {
 
     @Override
     public <T> void save(T userdetails) {
-        entityManager.persist(userdetails);
+         entityManager.persist(userdetails);
     }
 
     public <T> T merge(T whichObject) {

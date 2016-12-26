@@ -2,6 +2,7 @@ package com.project.dao;
 
 import com.project.domain.Product;
 import com.project.domain.ProductCategory;
+import com.project.domain.ProductDetail;
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 import org.springframework.stereotype.Repository;
 
@@ -31,5 +32,9 @@ public class ProductDao  {
 
     public Product getProductById(Integer productId) {
         return baseDao.findOneById(productId,Product.class);
+    }
+
+    public ProductDetail getProductDetails(Integer productId) {
+        return baseDao.findOneById(productId,ProductDetail.class);
     }
 }

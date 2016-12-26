@@ -16,6 +16,8 @@ public class Product {
     private ProductCategory category;
     @OneToOne
     private Inventory inventory;
+    @Basic
+    private Integer quatity;
 
     public Integer getProduct_id() {
         return product_id;
@@ -63,5 +65,13 @@ public class Product {
 
     public void setId(Integer id) {
         this.product_id = id;
+    }
+
+    public Integer getQuatity() {
+        return quatity;
+    }
+
+    public void setQuatity(Integer quatity) {
+        this.quatity = quatity;
     }
 }

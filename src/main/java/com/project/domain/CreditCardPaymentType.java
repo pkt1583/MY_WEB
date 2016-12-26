@@ -7,13 +7,13 @@ import javax.persistence.Entity;
 public class CreditCardPaymentType extends PaymentType {
 
     @Basic
-    private String creditCardNumber;
+    private String name;
 
-    public String getCreditCardNumber() {
-        return creditCardNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -16,21 +16,11 @@ public class OrderService {
     private OrderDao orderDao;
 
 
-    public ShoppingCart addProductToOrderLineItem(ShoppingCart shoppingCart, Product product,Integer quantity) {
-        ShoppingCart shoppingCart1=new ShoppingCart();
-        shoppingCart.copyTo(shoppingCart1);
-        OrderLineItem orderLineItem=new OrderLineItem();
-        orderLineItem.setProduct(product);
-        orderLineItem.setQuantity(quantity);
-        shoppingCart1.addOrderLineItem(orderLineItem);
-        return shoppingCart1;
+    public ProductOrder createOrder(ShoppingCart cart){
+        return new ProductOrder();
     }
 
-    public String  checkout(ShoppingCart shoppingCart) {
-        ProductOrder productOrder=orderDao.createOrder(shoppingCart);
-        if(productOrder!=null){
-            return "payment";
-        }
-        return null;
+    public void finalizeOrder(ProductOrder order) {
+
     }
 }

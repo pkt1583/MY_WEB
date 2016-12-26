@@ -21,6 +21,8 @@ public class OrderDao {
         productOrder.setOrderLineItems(shoppingCart.getOrderLineItems());
         productOrder.setCustomer(shoppingCart.getCustomer());
         productOrder.setPaymentCompleted(false);
-        return baseDao.save(productOrder);
+         baseDao.save(productOrder);
+         return null;
+        
     }
 }

@@ -61,4 +61,9 @@ public class ShoppingCart {
     public void copyTo(ShoppingCart shoppingCart1) {
         //deep copy everything from this to passed
     }
+
+	public void addProduct(Product product) {
+		// TODO Auto-generated method stub
+		
+	}
 }

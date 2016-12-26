@@ -1,10 +1,11 @@
 package com.project.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class ProductOrder {
+public class ProductOrder implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer OrderId;

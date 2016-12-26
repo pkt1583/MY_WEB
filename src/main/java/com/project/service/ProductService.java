@@ -3,6 +3,7 @@ package com.project.service;
 import com.project.dao.ProductDao;
 import com.project.domain.Product;
 import com.project.domain.ProductCategory;
+import com.project.domain.ProductDetail;
 import com.project.web.model.ProductCategoryDto;
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 import org.springframework.stereotype.Service;
@@ -32,19 +33,22 @@ public class ProductService {
     }
 
 
-    public List<ProductCategoryDto> getProductCategories() {
+    public List<ProductCategory> getProductCategories() {
         List<ProductCategory> productCategories = productDao.getAllCategories();
-        List<ProductCategoryDto> productCategoryDtos = new ArrayList<>();
-        productCategories.forEach(productCategory -> {
+       /* productCategories.forEach(productCategory -> {
             ProductCategoryDto productCategoryDto = new ProductCategoryDto();
             productCategoryDto.setCategoryId(productCategory.getCategory_id());
             productCategoryDto.setCategoryName(productCategory.getName());
             productCategoryDtos.add(productCategoryDto);
-        });
-        return productCategoryDtos;
+        });*/
+        return productCategories;
     }
 
     public Product getProductById(Integer productId) {
         return productDao.getProductById(productId);
+    }
+
+    public ProductDetail getProductProductDetailsByProductId(Integer productId) {
+        return productDao.getProductDetails(productId);
     }
 }

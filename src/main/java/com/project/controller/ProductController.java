@@ -2,15 +2,15 @@ package com.project.controller;
 
 
 import com.project.domain.Product;
+import com.project.domain.ProductCategory;
+import com.project.domain.ProductDetail;
 import com.project.service.ProductService;
-import com.project.web.model.ProductCategoryDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +20,11 @@ import java.util.List;
 public class ProductController {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
-    private List<ProductCategoryDto> productCategories;
+    private List<ProductCategory> productCategories;
     private List<Product> products = new ArrayList<>();
     private Product selectedProduct = new Product();
     private int selectedProductCategory;
-    private Product detailedProduct;
+    private ProductDetail detailedProduct;
     @EJB
     private ProductService productService;
 
@@ -54,35 +54,43 @@ public class ProductController {
 
     @PostConstruct
     public void populateProductCategories() {
-        List<ProductCategoryDto> productCategoryDtos = productService.getProductCategories();
+        List<ProductCategory> productCategoryDtos = productService.getProductCategories();
         this.productCategories = productCategoryDtos;
     }
 
-    public List<ProductCategoryDto> getProductCategories() {
+    public List<ProductCategory> getProductCategories() {
         return productCategories;
     }
 
-    public void setProductCategories(List<ProductCategoryDto> productCategories) {
+    public void setProductCategories(List<ProductCategory> productCategories) {
         this.productCategories = productCategories;
     }
 
-    public void populateProducts(ActionEvent event) {
-        List<Product> products = productService.getProductByCategory(selectedProductCategory);
+    public void getProductByCategory(Integer categoryId) {
+        List<Product> products = productService.getProductByCategory(categoryId);
         products.clear();
         this.products.addAll(products);
     }
 
 
-    public void populateProductDetails(Integer productId){
-        Product product=productService.getProductById(productId);
-        this.detailedProduct=product;
+    public void getProductDetails(Integer productId) {
+        ProductDetail product = productService.getProductProductDetailsByProductId(productId);
+        this.detailedProduct = product;
     }
 
-    public Product getDetailedProduct() {
+    public ProductDetail getDetailedProduct() {
         return detailedProduct;
     }
 
-    public void setDetailedProduct(Product detailedProduct) {
+    public void setDetailedProduct(ProductDetail detailedProduct) {
         this.detailedProduct = detailedProduct;
+    }
+
+    public ProductService getProductService() {
+        return productService;
+    }
+
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
     }
 }

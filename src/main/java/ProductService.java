@@ -1,5 +1,7 @@
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
@@ -8,8 +10,7 @@ import java.util.List;
 @Transactional
 public class ProductService {
 
-    @Inject
-    private ProductDao productDao;
+    private ProductDao productDao=new ProductDao();
 
     public ProductDao getProductDao() {
         return productDao;
@@ -30,13 +31,8 @@ public class ProductService {
 
 
     public List<ProductCategory> getProductCategories() {
-        List<ProductCategory> productCategories = productDao.getAllCategories();
-       /* productCategories.forEach(productCategory -> {
-            ProductCategoryDto productCategoryDto = new ProductCategoryDto();
-            productCategoryDto.setCategoryId(productCategory.getCategory_id());
-            productCategoryDto.setCategoryName(productCategory.getName());
-            productCategoryDtos.add(productCategoryDto);
-        });*/
+    	ProductDao newProdDao=new ProductDao();
+        List<ProductCategory> productCategories = newProdDao.getAllCategories();
         return productCategories;
     }
 

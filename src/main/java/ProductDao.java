@@ -1,5 +1,6 @@
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
@@ -10,8 +11,8 @@ import java.util.List;
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 public class ProductDao {
 
-    @Inject
-    private BaseDao baseDao;
+
+    private BaseDao baseDao=new BaseDaoImpl();
 
     public List<ProductCategory> getAllCategories() {
         return baseDao.getAllElements(ProductCategory.class);

@@ -10,6 +10,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.interceptor.Interceptor;
 import javax.interceptor.Interceptors;
+import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,24 +19,20 @@ import java.util.List;
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 public class ProductDao  {
 
-    @Inject
-    private BaseDao baseDao;
+   @Inject
+   private EntityManager entityManager;
 
     public List<ProductCategory> getAllCategories() {
-        return baseDao.getAllElements(ProductCategory.class);
+
+        return new ArrayList<>();
     }
 
     public List<Product> getProductByCategoryId(Integer productCategoryId) {
-        ProductCategory productCategory=new ProductCategory();
-        productCategory= baseDao.findOneById(productCategoryId,ProductCategory.class);
-       return productCategory.getProducts();
+        return new ArrayList<>();
     }
 
-    public Product getProductById(Integer productId) {
-        return baseDao.findOneById(productId,Product.class);
-    }
 
     public ProductDetail getProductDetails(Integer productId) {
-        return baseDao.findOneById(productId,ProductDetail.class);
+        return new ProductDetail();
     }
 }

@@ -5,10 +5,7 @@ import com.project.domain.Product;
 import com.project.domain.ProductCategory;
 import com.project.domain.ProductDetail;
 import com.project.service.ProductService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -19,78 +16,33 @@ import java.util.List;
 @RequestScoped
 public class ProductController {
 
-    protected Logger logger = LoggerFactory.getLogger(getClass());
     private List<ProductCategory> productCategories;
     private List<Product> products = new ArrayList<>();
     private Product selectedProduct = new Product();
-    private int selectedProductCategory;
-    private ProductDetail detailedProduct;
+    private Integer selectedProductCategory = null;
+
+    private ProductDetail productDetail;
+
     @EJB
     private ProductService productService;
 
-    public List<Product> getProducts() {
-        return products;
+    public String displayProductCategories() {
+        productCategories.addAll(productService.getAllCategories());
+        return "displayProductCategory";
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public String diplayProductsByCategory() {
+        products.addAll(productService.getProductByCategory(selectedProductCategory));
+        return "displayProducts";
     }
 
-    public Product getSelectedProduct() {
-        return selectedProduct;
+    public String getProduct(int productId) {
+        productDetail = productService.getProductDetails(productId);
+        return "detailsScreen";
     }
 
-    public void setSelectedProduct(Product selectedProduct) {
-        this.selectedProduct = selectedProduct;
+    public String addProductToCart(){
+        return "shoppingCart";
     }
 
-    public int getSelectedProductCategory() {
-        return selectedProductCategory;
-    }
-
-    public void setSelectedProductCategory(int selectedProductCategory) {
-        this.selectedProductCategory = selectedProductCategory;
-    }
-
-    @PostConstruct
-    public void populateProductCategories() {
-        List<ProductCategory> productCategoryDtos = productService.getProductCategories();
-        this.productCategories = productCategoryDtos;
-    }
-
-    public List<ProductCategory> getProductCategories() {
-        return productCategories;
-    }
-
-    public void setProductCategories(List<ProductCategory> productCategories) {
-        this.productCategories = productCategories;
-    }
-
-    public void getProductByCategory(Integer categoryId) {
-        List<Product> products = productService.getProductByCategory(categoryId);
-        products.clear();
-        this.products.addAll(products);
-    }
-
-
-    public void getProductDetails(Integer productId) {
-        ProductDetail product = productService.getProductProductDetailsByProductId(productId);
-        this.detailedProduct = product;
-    }
-
-    public ProductDetail getDetailedProduct() {
-        return detailedProduct;
-    }
-
-    public void setDetailedProduct(ProductDetail detailedProduct) {
-        this.detailedProduct = detailedProduct;
-    }
-
-    public ProductService getProductService() {
-        return productService;
-    }
-
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }
 }

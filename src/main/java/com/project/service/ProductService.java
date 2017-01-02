@@ -29,26 +29,12 @@ public class ProductService {
     }
 
     public List<ProductCategory> getAllCategories() {
-        return null;
-    }
-
-
-    public List<ProductCategory> getProductCategories() {
         List<ProductCategory> productCategories = productDao.getAllCategories();
-       /* productCategories.forEach(productCategory -> {
-            ProductCategoryDto productCategoryDto = new ProductCategoryDto();
-            productCategoryDto.setCategoryId(productCategory.getCategory_id());
-            productCategoryDto.setCategoryName(productCategory.getName());
-            productCategoryDtos.add(productCategoryDto);
-        });*/
         return productCategories;
     }
 
-    public Product getProductById(Integer productId) {
-        return productDao.getProductById(productId);
-    }
 
-    public ProductDetail getProductProductDetailsByProductId(Integer productId) {
+    public ProductDetail getProductDetails(Integer productId) {
         return productDao.getProductDetails(productId);
     }
 }

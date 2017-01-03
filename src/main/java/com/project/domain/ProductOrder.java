@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class ProductOrder implements Serializable{
+public class ProductOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer OrderId;
@@ -17,6 +17,10 @@ public class ProductOrder implements Serializable{
     private Customer customer;
     @Basic
     private boolean isPaymentCompleted;
+
+    @OneToOne
+    private ShippingDetails shippingDetails;
+    private double shippingCost;
 
     public boolean isPaymentCompleted() {
         return isPaymentCompleted;
@@ -57,5 +61,21 @@ public class ProductOrder implements Serializable{
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public ShippingDetails getShippingDetails() {
+        return shippingDetails;
+    }
+
+    public void setShippingDetails(ShippingDetails shippingDetails) {
+        this.shippingDetails = shippingDetails;
+    }
+
+    public void setShippingCost(double shippingCost) {
+        this.shippingCost = shippingCost;
+    }
+
+    public double getShippingCost() {
+        return shippingCost;
     }
 }

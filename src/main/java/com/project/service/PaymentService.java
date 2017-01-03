@@ -1,19 +1,47 @@
 package com.project.service;
 
+import com.project.dao.PaymentDao;
 import com.project.domain.Payment;
-import com.project.domain.PaymentType;
+import com.project.exception.PaymentNotAuthorizedException;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.util.Collection;
 
 @Stateless
 public class PaymentService {
-    public Collection<? extends PaymentType> getPaymentTypes() {
-        return null;
+
+    @EJB
+    private PaymentAuthorizationService paymentAuthorizationService;
+
+    @EJB
+    private EmailService emailService;
+
+    @EJB
+    private ShippingService shippingService;
+
+    @EJB
+    private OrderService orderService;
+
+    @EJB
+    private PaymentDao paymentDao;
+
+    public boolean processPayment(Payment paymentInfo) throws PaymentNotAuthorizedException {
+        if (!authorizedPayment(paymentInfo)) {
+            throw new PaymentNotAuthorizedException("Payment is not authorized");
+        } else {
+            paymentDao.updatePaymant(paymentInfo);
+            emailService.sendConfirmation(paymentInfo);
+            orderService.releaseOrder(paymentInfo.getProductOrder());
+            shippingService.sendToShipping(paymentInfo.getProductOrder());
+        }
+        return true;
     }
 
-    public boolean processPayment(Payment paymentInfo) {
+    private boolean authorizedPayment(Payment payment) {
+        return true;
+    }
 
-        return false;
+    public void updatePaymentInfo(Payment payment) {
+
     }
 }

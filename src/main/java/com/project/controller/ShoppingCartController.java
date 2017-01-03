@@ -3,6 +3,7 @@ package com.project.controller;
 import com.project.domain.Product;
 import com.project.domain.ShoppingCart;
 import com.project.exception.InsufficientQuatityException;
+import com.project.exception.ShoppingCartUpdateFailedException;
 import com.project.service.ShoppingCartService;
 
 import javax.ejb.EJB;
@@ -32,18 +33,18 @@ public class ShoppingCartController implements Serializable {
 
     public String updateCart(Product product, Integer quantity) {
         try {
-            this.shoppingCart =  shoppingCartService.updateProduct(product, quantity);
+            this.shoppingCart = shoppingCartService.updateProduct(product, quantity);
         } catch (InsufficientQuatityException e) {
             return "errorAddingToCart";
+        } catch (ShoppingCartUpdateFailedException e) {
+            return "errrorUpdatingCart";
         }
         return "";
 
     }
 
 
-
     public String checkout() {
-        shoppingCartService.checkout(shoppingCart);
-        return null;
+        return "checkout";
     }
 }

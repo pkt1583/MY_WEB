@@ -1,8 +1,6 @@
 package com.project.service;
 
 import com.project.dao.OrderDao;
-import com.project.domain.OrderLineItem;
-import com.project.domain.Product;
 import com.project.domain.ProductOrder;
 import com.project.domain.ShoppingCart;
 
@@ -16,11 +14,16 @@ public class OrderService {
     private OrderDao orderDao;
 
 
-    public ProductOrder createOrder(ShoppingCart cart){
-        return new ProductOrder();
+    public ProductOrder createOrder(ShoppingCart cart) {
+        ProductOrder productOrder = orderDao.createOrder(cart);
+        return productOrder;
     }
 
     public void finalizeOrder(ProductOrder order) {
 
+    }
+
+    public void releaseOrder(ProductOrder productOrder) {
+        orderDao.releaseOrder(productOrder);
     }
 }

@@ -8,16 +8,17 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer product_id;
     @Basic
-
     private String name;
+
     @Basic
     private String description;
     @ManyToOne
     private ProductCategory category;
     @OneToOne
     private Inventory inventory;
+
     @Basic
-    private Integer quatity;
+    private Double cost;
 
     public Integer getProduct_id() {
         return product_id;
@@ -67,11 +68,11 @@ public class Product {
         this.product_id = id;
     }
 
-    public Integer getQuatity() {
-        return quatity;
+    public Double getCost() {
+        return cost;
     }
 
-    public void setQuatity(Integer quatity) {
-        this.quatity = quatity;
+    public void setCost(Double cost) {
+        this.cost = cost;
     }
 }

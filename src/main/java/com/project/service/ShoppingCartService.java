@@ -40,7 +40,7 @@ public class ShoppingCartService {
 
     private Inventory checkQuantityInInventory(Product product, Integer quantity) throws InsufficientQuatityException {
         Inventory inventory = inventoryService.getProductInventoryDetails(product);
-        if (inventory.getCurrentStock() <= quantity) {
+        if (inventory.getQuatity() <= quantity) {
             inventoryService.updateProduct(product,inventory, quantity);
         } else {
             throw new InsufficientQuatityException("Not enought stock");

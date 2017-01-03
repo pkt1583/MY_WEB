@@ -12,7 +12,7 @@ public class Inventory implements Serializable {
     @Id
     private Integer InventoryId;
     @Basic
-    private int currentStock;
+    private int quatity;
 
     @OneToOne
     private Product product;
@@ -25,12 +25,12 @@ public class Inventory implements Serializable {
         this.product = product;
     }
 
-    public int getCurrentStock() {
-        return currentStock;
+    public int getQuatity() {
+        return quatity;
     }
 
-    public void setCurrentStock(int currentStock) {
-        this.currentStock = currentStock;
+    public void setQuatity(int currentStock) {
+        this.quatity = currentStock;
     }
 
     public Integer getInventoryId() {

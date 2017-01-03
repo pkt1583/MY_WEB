@@ -1,10 +1,12 @@
 package com.project.service;
 
+import com.project.dao.ShoppingCartDao;
 import com.project.domain.Inventory;
 import com.project.domain.OrderLineItem;
 import com.project.domain.Product;
 import com.project.domain.ShoppingCart;
 import com.project.exception.InsufficientQuatityException;
+import com.project.exception.ShoppingCartUpdateFailedException;
 
 import javax.ejb.Stateful;
 import javax.inject.Inject;
@@ -20,6 +22,9 @@ public class ShoppingCartService {
     @Inject
     private OrderService orderService;
 
+    @Inject
+    private ShoppingCartDao shoppingCartDao;
+
     public ShoppingCart getShoppingCart(Integer shoppingCartId) {
         return new ShoppingCart();
     }
@@ -30,7 +35,6 @@ public class ShoppingCartService {
         orderLineItem.setProduct(product);
         orderLineItem.setQuantity(quantity);
         cart.addOrderLineItem(orderLineItem);
-
         return cart;
     }
 
@@ -49,13 +53,20 @@ public class ShoppingCartService {
         return true;
     }
 
-    public ShoppingCart updateProduct(Product product, Integer quantity) throws InsufficientQuatityException {
-        Set<OrderLineItem> orderLineItems = cart.getOrderLineItems();
-        for (OrderLineItem orderLineItem : orderLineItems) {
-            Product lineItemProduct = orderLineItem.getProduct();
-            if (lineItemProduct.equals(product)) {
-                inventoryService.updateProduct(product,checkQuantityInInventory(product, quantity), quantity);
-                orderLineItem.setQuantity(quantity);
+    public ShoppingCart updateProduct(Product product, Integer quantity) throws InsufficientQuatityException, ShoppingCartUpdateFailedException {
+        if(quantity==0){
+            cart.getOrderLineItems().remove(product);
+            if(!shoppingCartDao.updateCart(cart)){
+                throw new ShoppingCartUpdateFailedException("Failed to update shopping cart");
+            }
+        }else {
+            Set<OrderLineItem> orderLineItems = cart.getOrderLineItems();
+            for (OrderLineItem orderLineItem : orderLineItems) {
+                Product lineItemProduct = orderLineItem.getProduct();
+                if (lineItemProduct.equals(product)) {
+                    inventoryService.updateProduct(product, checkQuantityInInventory(product, quantity), quantity);
+                    orderLineItem.setQuantity(quantity);
+                }
             }
         }
         return cart;

@@ -40,10 +40,7 @@ public class ShoppingCartController implements Serializable {
 
     }
 
-    public String removeProduct(Product product) {
-        shoppingCartService.removeProduct(product);
-        return null;
-    }
+
 
     public String checkout() {
         shoppingCartService.checkout(shoppingCart);

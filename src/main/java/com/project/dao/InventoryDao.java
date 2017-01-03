@@ -9,8 +9,9 @@ import javax.persistence.PersistenceContext;
 public class InventoryDao {
     @PersistenceContext
     private EntityManager entityManager;
+
     public Inventory getInHouseStock(Product product) {
-        entityManager.find(Product.class,new Product());
+        entityManager.find(Product.class, new Product());
         return new Inventory();
     }
 

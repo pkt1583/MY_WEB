@@ -1,2 +1,0 @@
-1. Call newuser create using service from converter
-2. Check if records are getting persisted properly

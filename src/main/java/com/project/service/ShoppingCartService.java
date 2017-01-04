@@ -35,6 +35,7 @@ public class ShoppingCartService {
         orderLineItem.setProduct(product);
         orderLineItem.setQuantity(quantity);
         cart.addOrderLineItem(orderLineItem);
+        shoppingCartDao.updateCart(cart);
         return cart;
     }
 

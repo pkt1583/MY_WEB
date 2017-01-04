@@ -39,7 +39,7 @@ public class ShoppingCartController implements Serializable {
         } catch (ShoppingCartUpdateFailedException e) {
             return "errrorUpdatingCart";
         }
-        return "";
+        return null;
 
     }
 

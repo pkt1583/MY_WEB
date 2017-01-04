@@ -19,7 +19,7 @@ public class ProductController {
     private List<ProductCategory> productCategories;
     private List<Product> products = new ArrayList<>();
     private Product selectedProduct = new Product();
-    private Integer selectedProductCategory = null;
+    private Integer selectedProductCategory = null;;
 
     private ProductDetail productDetail;
 
@@ -27,12 +27,14 @@ public class ProductController {
     private ProductService productService;
 
     public String displayProductCategories() {
-        productCategories.addAll(productService.getAllCategories());
+        List<ProductCategory> productCategories=productService.getAllCategories();
+        productCategories.addAll(productCategories);
         return "displayProductCategory";
     }
 
     public String diplayProductsByCategory() {
-        products.addAll(productService.getProductByCategory(selectedProductCategory));
+        List<Product> products=productService.getProductByCategory(selectedProductCategory);
+        this.products=products;
         return "displayProducts";
     }
 
